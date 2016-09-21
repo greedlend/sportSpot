@@ -1,0 +1,18 @@
+{
+  "name": "sportSpot",
+  "description": "",
+  "main": "",
+  "authors": [
+    "greedlend <andy010833@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/greedlend/sportSpot",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
