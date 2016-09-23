@@ -2,19 +2,25 @@ var package = require('./package.json'),
     gulp = require('gulp'),
     bower = require('gulp-bower'),
     mainBowerFiles = require('main-bower-files'),
-    filter = require('gulp-filter'),
+    inject = require('gulp-inject'),
     del = require('del'),
     config = {
-        public: './public',
+        publicDir: './public',
         bowerPath: './build/libs' ,
+        templatesDir: './views/templates',
+        viewsDir: './views',
     };
 
-gulp.task('build', ['bowerFiles']);
+gulp.task('build', ['inject']);
 
-gulp.task('clean', del.bind(null, [config.public]));
+gulp.task('clean', del.bind(null, [config.publicDir]));
+
+gulp.task('fetchBowerFiles', ['bowerFiles'], function() {
+    gulp.start('build');
+});
 
 gulp.task('deploy', ['clean'], function() {
-    gulp.start('build');
+    gulp.start('fetchBowerFiles');
 });
 
 gulp.task('default', function() {
@@ -40,6 +46,17 @@ gulp.task('bower', function() {
 
 gulp.task('bowerFiles', ['bower'], function() {
     return gulp.src(mainBowerFiles())
-        .pipe(gulp.dest(config.public + '/libs'));
+        .pipe(gulp.dest(config.publicDir + '/libs'));
 
+});
+
+gulp.task('inject', function() {
+    var target = gulp.src(config.templatesDir + '/**/*.*'),
+        sources = gulp.src([
+            config.publicDir + '/**/*.css',
+            config.publicDir + '/**/*.js'
+        ], { read: false });
+
+    return target.pipe(inject(sources))
+        .pipe(gulp.dest(config.viewsDir));
 });

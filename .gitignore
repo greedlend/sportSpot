@@ -30,3 +30,6 @@ build/libs/*
 
 # static files
 public/*
+
+# ejs
+views/*.ejs
