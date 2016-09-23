@@ -20,6 +20,8 @@
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-bower": "0.0.13",
+    "gulp-filter": "^4.0.0",
+    "main-bower-files": "^2.13.1",
     "nodemon": "^1.10.2"
   }
 }

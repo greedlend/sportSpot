@@ -1,12 +1,15 @@
 var package = require('./package.json'),
     gulp = require('gulp'),
     bower = require('gulp-bower'),
+    mainBowerFiles = require('main-bower-files'),
+    filter = require('gulp-filter'),
     del = require('del'),
     config = {
         public: './public',
+        bowerPath: './build/libs' ,
     };
 
-gulp.task('build', ['bower']);
+gulp.task('build', ['bowerFiles']);
 
 gulp.task('clean', del.bind(null, [config.public]));
 
@@ -33,4 +36,10 @@ gulp.task('default', function() {
 
 gulp.task('bower', function() {
     return bower({ cmd: 'install' });
+});
+
+gulp.task('bowerFiles', ['bower'], function() {
+    return gulp.src(mainBowerFiles())
+        .pipe(gulp.dest(config.public + '/libs'));
+
 });

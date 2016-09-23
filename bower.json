@@ -19,5 +19,25 @@
   "dependencies": {
     "font-awesome": "fontawesome#^4.6.3",
     "bootstrap": "v4.0.0-alpha.4"
+  },
+  "overrides": {
+      "bootstrap": {
+        "main": [
+          "dist/js/*.min.*",
+          "dist/css/*.min.*"
+        ]
+      },
+      "font-awesome": {
+        "main": "css/*.min.*"
+      },
+      "jquery": {
+        "main": "dist/*.min.*"
+      },
+      "tether": {
+        "main": [
+          "dist/js/*.min.*",
+          "dist/css/*.min.*"
+        ]
+      }
   }
 }
