@@ -3,6 +3,7 @@ var package = require('./package.json'),
     bower = require('gulp-bower'),
     mainBowerFiles = require('main-bower-files'),
     inject = require('gulp-inject'),
+    nodemon = require('gulp-nodemon'),
     del = require('del'),
     config = {
         publicDir: './public',
@@ -10,6 +11,16 @@ var package = require('./package.json'),
         templatesDir: './views/templates',
         viewsDir: './views',
     };
+
+gulp.task('serve', function() {
+    nodemon({
+            script: './bin/www',
+            ext: 'html js',
+        })
+        .on('restart', function() {
+            console.log('restarted!')
+        })
+});
 
 gulp.task('build', ['inject']);
 
