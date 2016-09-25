@@ -2,6 +2,8 @@ var package = require('./package.json'),
     gulp = require('gulp'),
     bower = require('gulp-bower'),
     mainBowerFiles = require('main-bower-files'),
+    browserify = require('gulp-browserify'),
+    vueify = require('vueify'),
     inject = require('gulp-inject'),
     nodemon = require('gulp-nodemon'),
     del = require('del'),
@@ -70,4 +72,12 @@ gulp.task('inject', function() {
 
     return target.pipe(inject(sources))
         .pipe(gulp.dest(config.viewsDir));
+});
+
+gulp.task('vue', function() {
+    // build + vueify and send file to public directory
+    gulp.src('./build/js/main.js')
+        .pipe(browserify({ transform: 'vueify', debug: true }))
+        .pipe(gulp.dest('./public'));
+
 });
