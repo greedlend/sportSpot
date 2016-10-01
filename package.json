@@ -12,10 +12,15 @@
     "ejs": "^2.5.1",
     "express": "~4.13.4",
     "express-ejs-layouts": "^2.2.0",
+    "gulp-rename": "^1.2.2",
     "mongoose": "^4.6.1",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
+    "vinyl-source-stream": "^1.1.0",
     "vue": "^1.0.27"
+  },
+  "browserify": {
+    "transform": ["vueify"]
   },
   "devDependencies": {
     "del": "^2.2.2",
