@@ -56,7 +56,6 @@ gulp.task('deploy', ['clean'], function() {
 
 gulp.task('default', function() {
     console.log('');
-    console.log('');
     console.log('To develop, run "gulp serve"');
     console.log('- Sets up');
     console.log('  - JS/SCSS watch and compile');
@@ -68,7 +67,6 @@ gulp.task('default', function() {
     console.log('  - Cleans assets folder');
     console.log('  - Generates final built files');
     console.log('');
-    console.log('');
 });
 
 gulp.task('inject', function() {
@@ -77,7 +75,6 @@ gulp.task('inject', function() {
             config.publicDir + '/**/*.css',
             config.publicDir + '/**/*.js'
         ], { read: false });
-
     return target.pipe(inject(sources))
         .pipe(gulp.dest(config.viewsDir));
 });
@@ -91,10 +88,8 @@ gulp.task('vue', function() {
 
 gulp.task('test', function() {
     // build + vueify and send file to public directory
-    // 1.
-    // var b = browserify('./build/js/main.js',{ transform: [vueify], debug: true });
-    // 2.
-    // var b = browserify({
+    // 1. var b = browserify('./build/js/main.js',{ transform: [vueify], debug: true });
+    // 2. var b = browserify({
     // 	entries: './build/js/main.js',
     // 	transform: ["vueify"], 
     // 	debug: true });
