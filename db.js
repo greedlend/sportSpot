@@ -9,4 +9,4 @@ var Todo = new Schema({
 });
  
 mongoose.model( 'Todo', Todo );
-mongoose.connect('mongodb://localhost:27017/xxxx'); //db'name: xxxx
+mongoose.connect('mongodb://localhost:27017/testSQL'); //db'name: testSQL
