@@ -60,5 +60,12 @@ app.use(function(err, req, res, next) {
   });
 });
 
+app.use(function(err, req, res, next) {
+  res.status(err.status || 302);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
 
 module.exports = app;
